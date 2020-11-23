@@ -22,5 +22,5 @@ example:
 &nbsp;&nbsp;&nbsp;&nbsp;"excludeStrings":[<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Context"<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;],<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;"outputPath":"..\\AIMS\\src\\models"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;"outputPath":"..\\FrontEnd\\src\\models"<br/>
 }
