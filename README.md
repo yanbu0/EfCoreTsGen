@@ -17,10 +17,10 @@ excludeStrings: array of strings that if contained in the name of the file, the 
 outputPath: path relative to the config file to output the generated typescript files
 
 example:
-{
-    "modelPath":".\\Models",
-    "excludeStrings":[
-        "Context"
-    ],
-    "outputPath":"..\\AIMS\\src\\models"
+{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;"modelPath":".\\Models",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;"excludeStrings":[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Context"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;],<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;"outputPath":"..\\AIMS\\src\\models"<br/>
 }
