@@ -5,8 +5,9 @@ Install using dotnet CLI:
 
 `dotnet tool install -g EfCoreTsGen`
 
-Run via powershell or command line: `efcoretsgen [PathToConfig.json]`
-If you do not insert a property tool assumes config lives in same directory that you are running it from.
+Run via powershell or command line: `efcoretsgen [PathToConfig.json]`<br/>
+If you do not insert a property tool assumes config lives in same directory that you are running it from.<br/>
+Config file must be named `efcoretsgen.settings.json` 
 
 Config:
 
@@ -16,7 +17,7 @@ excludeStrings: array of strings that if contained in the name of the file, the 
 
 outputPath: path relative to the config file to output the generated typescript files
 
-example:
+example:<br/>
 {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;"modelPath":".\\Models",<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;"excludeStrings":[<br/>
