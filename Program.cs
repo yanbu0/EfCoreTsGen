@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Collections.Generic;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.Reflection;
+using System.Linq;
 
-namespace EFCoreTsGen
+namespace EfCoreTsGen
 {
     class Program
     {
@@ -55,7 +52,6 @@ namespace EFCoreTsGen
             else {
                 Console.WriteLine("No settings file found, exiting!");
             }
-
         }
     }
 }

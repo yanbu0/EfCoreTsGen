@@ -9,7 +9,7 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Reflection;
 
-namespace EFCoreTsGen
+namespace EfCoreTsGen
 {
     public static class Extensions
     {
