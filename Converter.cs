@@ -110,9 +110,11 @@ namespace EfCoreTsGen
                     tsTypeStr = "string = null";
                     break;
                 case "DateTime":
+                case "DateTimeOffset":
                     tsTypeStr = "Date = new Date(0)";
                     break;
                 case "DateTime?":
+                case "DateTimeOffset?":
                     tsTypeStr = "Date = null";
                     break;
                 case "int?":
