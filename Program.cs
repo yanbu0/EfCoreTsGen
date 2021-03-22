@@ -12,8 +12,8 @@ namespace EfCoreTsGen
         static void Main(string[] args)
         {
             const string SETTINGS_FILE_NAME = "efcoretsgen.settings.json";
-            string settingsPath = args.FirstOrDefault() ?? ".\\";
-            string settingsFilePath = $"{settingsPath}\\{SETTINGS_FILE_NAME}";
+            string settingsPath = args.FirstOrDefault() ?? Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string settingsFilePath = Path.Combine(settingsPath,SETTINGS_FILE_NAME);
 
             Console.WriteLine($"Looking for {SETTINGS_FILE_NAME} at {settingsPath}...");
 
@@ -40,7 +40,7 @@ namespace EfCoreTsGen
                 {
                     //Write ts files into specified dir
                     string outputDir = Path.GetFullPath(settingsObj["outputPath"].Value<string>());
-                    string filePath = outputDir + "\\" + cl.ClassName + ".ts";
+                    string filePath = Path.Combine(outputDir,cl.ClassName + ".ts");
                     File.WriteAllText(filePath, cl.BuildTsStr(classAndLines.Select(cl => cl.ClassName).ToList()));
 
                 }

@@ -127,6 +127,9 @@ namespace EfCoreTsGen
                 case "Guid":
                     tsTypeStr = "string = '00000000-0000-0000-0000-000000000000'";
                     break;
+                case "Guid?":
+                    tsTypeStr = "string = null";
+                    break;
                 default:
                     tsTypeStr = "number = 0";
                     if (csTypeStr.Contains("ICollection"))
