@@ -12,7 +12,7 @@ namespace EfCoreTsGen
         static void Main(string[] args)
         {
             const string SETTINGS_FILE_NAME = "efcoretsgen.settings.json";
-            string settingsPath = args.FirstOrDefault() ?? Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string settingsPath = Path.GetFullPath(args.FirstOrDefault()) ?? Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             string settingsFilePath = Path.Combine(settingsPath,SETTINGS_FILE_NAME);
 
             Console.WriteLine($"Looking for {SETTINGS_FILE_NAME} at {settingsPath}...");
@@ -22,7 +22,7 @@ namespace EfCoreTsGen
 
                 JObject settingsObj = JObject.Parse(File.ReadAllText(settingsFilePath));
 
-                string modelsPath = Path.GetFullPath(settingsPath + settingsObj["modelPath"].Value<string>());
+                string modelsPath = Path.Combine(settingsPath,settingsObj["modelPath"].Value<string>());
                 List<string> excludeList= settingsObj["excludeStrings"].ToObject<List<string>>();
 
                 Console.WriteLine($"Reading EF Models from {modelsPath}, excluding '{String.Join("','",excludeList)}'");
@@ -45,11 +45,12 @@ namespace EfCoreTsGen
 
                 }
 
-                
+                Console.BackgroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Complete.  {classAndLines.Count()} files created or updated!");
 
             }
             else {
+                Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("No settings file found, exiting!");
             }
         }
