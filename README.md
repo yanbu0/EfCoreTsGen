@@ -6,7 +6,7 @@ Install using dotnet CLI:
 `dotnet tool install -g EfCoreTsGen`
 
 Run via powershell or command line: `efcoretsgen [PathToConfig.json]`<br/>
-<b>Breaking change:</b> You must enter the path to the settings file as a parameter, if it is in the same directory simply run `efcoretsgen .`
+<b>Breaking change:</b> You must enter the path to the settings file as a parameter, if it is in the same directory simply run `efcoretsgen .`<br/>
 Config file must be named `efcoretsgen.settings.json` 
 
 Config:
