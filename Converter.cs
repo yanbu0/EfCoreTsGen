@@ -24,7 +24,7 @@ namespace EfCoreTsGen
 
             //Get lines inside class
             List<string> filteredLines = allLines.GetRange(classNameIndex + 2, allLines.Count() - (classNameIndex + 4));
-            filteredLines = filteredLines.Where(l => l.Length > 0).ToList(); //Remove blank lines
+            filteredLines = filteredLines.Where(l => l.Length > 0 && !l.Contains("//")).ToList(); //Remove blank lines and comments
 
 
             return new ClassAndLines() { ClassName = className, Lines = filteredLines };
