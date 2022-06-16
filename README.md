@@ -1,4 +1,6 @@
 # EfCoreTsGen
+Note: for .net 6 compatibility install v1.6.2 or higher
+
 Generates typescript classes from Entity Framework scaffolded classes
 
 Install using dotnet CLI:
