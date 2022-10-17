@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace EfCoreTsGen
 {
@@ -25,6 +26,7 @@ namespace EfCoreTsGen
                 string modelsPath = Path.Combine(settingsPath,settingsObj["modelPath"].Value<string>());
                 List<string> excludeList= settingsObj["excludeStrings"].ToObject<List<string>>();
 
+                Console.WriteLine($"Running EfCoreTsGen Version: {Assembly.GetEntryAssembly().GetName().Version}");
                 Console.WriteLine($"Reading EF Models from {modelsPath}, excluding '{String.Join("','",excludeList)}'");
 
                 var modelFileNames = Directory.EnumerateFiles(modelsPath, "*.cs").Where(m => !excludeList.Any(e => m.Contains(e)));
@@ -47,11 +49,13 @@ namespace EfCoreTsGen
 
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Complete.  {classAndLines.Count()} files created or updated!");
+                Console.BackgroundColor = ConsoleColor.Black;
 
             }
             else {
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("No settings file found, exiting!");
+                Console.BackgroundColor = ConsoleColor.Black;
             }
         }
     }
