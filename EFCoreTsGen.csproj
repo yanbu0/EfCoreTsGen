@@ -7,6 +7,7 @@
 
    <!-- Dotnet Tool Specific settings -->
   <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackAsTool>true</PackAsTool>
     <PackageId>efcoretsgen</PackageId>
     <ToolCommandName>efcoretsgen</ToolCommandName>
