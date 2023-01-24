@@ -50,12 +50,13 @@ namespace EfCoreTsGen
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Complete.  {classAndLines.Count()} files created or updated!");
                 Console.BackgroundColor = ConsoleColor.Black;
-
+                Console.WriteLine();
             }
             else {
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("No settings file found, exiting!");
                 Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine();
             }
         }
     }

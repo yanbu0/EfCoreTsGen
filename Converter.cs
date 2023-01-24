@@ -43,7 +43,7 @@ namespace EfCoreTsGen
             foreach (string l in classAndLines.Lines)
             {
                 string lineToAdd = l;
-                List<string> removeMeList = new List<string>() { " { get; set; }", "virtual", "public" };
+                List<string> removeMeList = new List<string>() { " { get; set; }", "virtual", "public", "{ get; }" };
                 foreach (string removeMe in removeMeList)
                 {
                     lineToAdd = lineToAdd.RemoveThis(removeMe);
@@ -154,7 +154,19 @@ namespace EfCoreTsGen
         private static string RemoveThis(this string fullStr, string removeMe)
         {
             int index = fullStr.IndexOf(removeMe);
-            string retStr = (index < 0) ? fullStr : fullStr.Remove(index, removeMe.Length);
+            //if remove string is { get; } need to remove rest of line due to ef core 7 changes
+            string retStr = fullStr;
+            if (index > 0)
+            {
+                if (removeMe == "{ get; }")
+                {
+                    retStr = fullStr.Remove(index);
+                }
+                else
+                {
+                    retStr = fullStr.Remove(index, removeMe.Length);
+                }
+            }
             return retStr;
         }
     }
