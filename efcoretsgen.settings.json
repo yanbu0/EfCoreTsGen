@@ -1,0 +1,7 @@
+{
+    "modelPath":"C:/source/AIMS/AIMSApi/Models",
+    "excludeStrings":[
+        "Context"
+    ],
+    "outputPath":"C:/source/AIMS/AIMS/src/models"
+}

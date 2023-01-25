@@ -23,7 +23,7 @@ namespace EfCoreTsGen
             string className = allLines.Where(l => l.Contains(" class ")).Select(l => l.Substring(l.LastIndexOf(' ') + 1)).Single();
 
             //Get lines inside class
-            List<string> filteredLines = allLines.GetRange(classNameIndex + 2, allLines.Count() - (classNameIndex + 4));
+            List<string> filteredLines = allLines.GetRange(classNameIndex + 2, allLines.Count() - (classNameIndex + 3));
             filteredLines = filteredLines.Where(l => l.Length > 0 && !l.Contains("//")).ToList(); //Remove blank lines and comments
 
 
