@@ -23,7 +23,7 @@ namespace EfCoreTsGen
             string className = allLines.Where(l => l.Contains(" class ")).Select(l => l.Substring(l.LastIndexOf(' ') + 1)).Single();
 
             //Get lines inside class
-            List<string> filteredLines = allLines.GetRange(classNameIndex + 2, allLines.Count() - (classNameIndex + 4));
+            List<string> filteredLines = allLines.GetRange(classNameIndex + 2, allLines.Count() - (classNameIndex + 3));
             filteredLines = filteredLines.Where(l => l.Length > 0 && !l.Contains("//")).ToList(); //Remove blank lines and comments
 
 
@@ -43,7 +43,7 @@ namespace EfCoreTsGen
             foreach (string l in classAndLines.Lines)
             {
                 string lineToAdd = l;
-                List<string> removeMeList = new List<string>() { " { get; set; }", "virtual", "public", "{ get; }" };
+                List<string> removeMeList = new List<string>() { " { get; set; }", "virtual", "public", "{ get; }", " = new List<*" };
                 foreach (string removeMe in removeMeList)
                 {
                     lineToAdd = lineToAdd.RemoveThis(removeMe);
@@ -109,10 +109,12 @@ namespace EfCoreTsGen
                 case "string":
                     tsTypeStr = "string = null";
                     break;
+                case "DateOnly":
                 case "DateTime":
                 case "DateTimeOffset":
                     tsTypeStr = "Date = new Date(0)";
                     break;
+                case "DateOnly?":
                 case "DateTime?":
                 case "DateTimeOffset?":
                     tsTypeStr = "Date = null";
@@ -153,12 +155,13 @@ namespace EfCoreTsGen
 
         private static string RemoveThis(this string fullStr, string removeMe)
         {
-            int index = fullStr.IndexOf(removeMe);
-            //if remove string is { get; } need to remove rest of line due to ef core 7 changes
+            //if last char is "*" remove rest of line
+            string test = removeMe.EndsWith('*') ? removeMe.Remove(removeMe.Length-1) : removeMe;
+            int index = fullStr.IndexOf(test);
             string retStr = fullStr;
             if (index > 0)
             {
-                if (removeMe == "{ get; }")
+                if (removeMe.EndsWith('*'))
                 {
                     retStr = fullStr.Remove(index);
                 }
@@ -168,6 +171,21 @@ namespace EfCoreTsGen
                 }
             }
             return retStr;
+        }
+
+        public static string GetStringBetweenCharacters(this string input, char charFrom, char charTo)
+        {
+            int posFrom = input.IndexOf(charFrom);
+            if (posFrom != -1) //if found char
+            {
+                int posTo = input.IndexOf(charTo, posFrom + 1);
+                if (posTo != -1) //if found char
+                {
+                    return input.Substring(posFrom + 1, posTo - posFrom - 1);
+                }
+            }
+
+            return string.Empty;
         }
     }
 
