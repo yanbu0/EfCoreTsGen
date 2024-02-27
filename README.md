@@ -1,4 +1,6 @@
 # EfCoreTsGen
+For .net 8 compatibility install v1.8.0 or higher
+
 For .net 7 compatibility install v1.7.0 or higher
 
 For .net 6 compatibility install v1.6.2
